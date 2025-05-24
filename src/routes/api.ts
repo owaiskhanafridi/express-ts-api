@@ -12,7 +12,7 @@ router.post('/echo', (req: Request, res: Response) => {
     res.json({ received: req.body });
 });
 
-router.post('/users', (req: Request<{}, {}, CreateUserCommand>, res: Response): void => {
+router.post('/users', (req: Request<CreateUserCommand>, res: Response): void => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
@@ -34,7 +34,7 @@ router.post('/users', (req: Request<{}, {}, CreateUserCommand>, res: Response): 
   });
 });
 
-router.get('/users/:id', (req: Request<{id: string}, {}, {}, {}, {}>, res: Response) => {
+router.get('/users/:id', (req: Request<{id: string}>, res: Response) => {
     const userId = req.params.id;
     console.log(`UserId passed: ${userId}`);
 
