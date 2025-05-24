@@ -38,11 +38,31 @@ router.get('/users/:id', (req: Request<{id: string}>, res: Response) => {
     const userId = req.params.id;
     console.log(`UserId passed: ${userId}`);
 
-    res.status(201).json({
+    res.status(200).json({
         userId: userId,
         user: "John Edward",
         email: "john@gmail.com"
     });
 })
+
+router.patch('/users/:id', (req: Request<{id: string}>, res: Response) => {
+    const userId = req.params.id;
+    console.log(`Updating user by UserId: ${userId}`);
+
+    res.status(200).json({
+        userId: userId,
+        user: "John Edward",
+        email: "john@gmail.com"
+    });
+})
+
+router.delete('/users/:id', (req: Request<{id: string}>, res: Response) => {
+    const userId = req.params.id;
+    console.log(`Deleting user by userId: ${userId}`);
+
+    res.status(200).json({message: `User with userId:${userId} has been successfully deleted}`})
+})
+
+
 
 export default router;
